@@ -70,6 +70,7 @@ enum {
 	HW_PLATFORM_HDK = 31,
 	HW_PLATFORM_IOT = 32,
 	HW_PLATFORM_IDP = 34,
+        HW_PLATFORM_F10 = 39,
 	HW_PLATFORM_INVALID
 };
 
@@ -93,7 +94,8 @@ const char *hw_platform[] = {
 	[HW_PLATFORM_ADP] = "ADP",
 	[HW_PLATFORM_HDK] = "HDK",
 	[HW_PLATFORM_IOT] = "IOT",
-	[HW_PLATFORM_IDP] = "IDP"
+	[HW_PLATFORM_IDP] = "IDP",
+	[HW_PLATFORM_F10] = "DAVINCI"
 };
 
 enum {

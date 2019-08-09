@@ -15,7 +15,6 @@
 #include "dsi-panel-hx83112a-truly-singlemipi-fhd-video.dtsi"
 #include "dsi-panel-td4328-1080p-video.dtsi"
 #include "dsi-panel-td4328-1080p-cmd.dtsi"
-#include "dsi-panel-tianma-fhd-nt36672a-video.dtsi"
 #include "dsi-panel-rm69298-truly-amoled-fhd-plus-video.dtsi"
 #include "dsi-panel-rm69298-truly-amoled-fhd-plus-cmd.dtsi"
 #include "dsi-panel-sharp-split-link-wuxga-video.dtsi"

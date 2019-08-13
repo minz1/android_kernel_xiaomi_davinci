@@ -2552,35 +2552,31 @@ static int wcd937x_bind(struct device *dev)
 	if (!wcd937x->supplies) {
 		dev_err(dev, "%s: Cannot init wcd supplies\n",
 			__func__);
-		goto err_bind_all;
+		return ret;
 	}
 
 	plat_data = dev_get_platdata(dev->parent);
 	if (!plat_data) {
 		dev_err(dev, "%s: platform data from parent is NULL\n",
 			__func__);
-		ret = -EINVAL;
-		goto err_bind_all;
+		return -EINVAL;
 	}
 	wcd937x->handle = (void *)plat_data->handle;
 	if (!wcd937x->handle) {
 		dev_err(dev, "%s: handle is NULL\n", __func__);
-		ret = -EINVAL;
-		goto err_bind_all;
+		return -EINVAL;
 	}
 	wcd937x->update_wcd_event = plat_data->update_wcd_event;
 	if (!wcd937x->update_wcd_event) {
 		dev_err(dev, "%s: update_wcd_event api is null!\n",
 			__func__);
-		ret = -EINVAL;
-		goto err_bind_all;
+		return -EINVAL;
 	}
 	wcd937x->register_notifier = plat_data->register_notifier;
 	if (!wcd937x->register_notifier) {
 		dev_err(dev, "%s: register_notifier api is null!\n",
 			__func__);
-		ret = -EINVAL;
-		goto err_bind_all;
+		return -EINVAL;
 	}
 
 	ret = msm_cdc_enable_static_supplies(dev, wcd937x->supplies,
@@ -2589,7 +2585,7 @@ static int wcd937x_bind(struct device *dev)
 	if (ret) {
 		dev_err(dev, "%s: wcd static supply enable failed!\n",
 			__func__);
-		goto err_bind_all;
+		return ret;
 	}
 
 	wcd937x_reset(dev);
@@ -2605,7 +2601,7 @@ static int wcd937x_bind(struct device *dev)
 	if (ret) {
 		dev_err(dev, "%s: Slave bind failed, ret = %d\n",
 			__func__, ret);
-		goto err_bind_all;
+		return ret;
 	}
 
 	ret = wcd937x_parse_port_mapping(dev, "qcom,rx_swr_ch_map", CODEC_RX);
